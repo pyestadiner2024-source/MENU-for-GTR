@@ -222,39 +222,25 @@ body {
 
 .photo-gallery {
   margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  max-height: 800px;
-  overflow-y: auto;
-  padding-right: 12px;
-  scroll-snap-type: y mandatory;
-}
-
-.photo-gallery::-webkit-scrollbar {
-  width: 10px;
-}
-
-.photo-gallery::-webkit-scrollbar-thumb {
-  background: rgba(181, 23, 46, 0.4);
-  border-radius: 999px;
+  display: block;
+  gap: 0;
+  /* Stack full-viewport images vertically so the page scrolls normally */
+  overflow: visible;
 }
 
 .gallery-item {
   position: relative;
   width: 100%;
-  min-height: 600px;
-  border-radius: 20px;
+  min-height: 100svh;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: none;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
   scroll-snap-align: start;
-  flex-shrink: 0;
 }
 
 .gallery-item:hover {
-  transform: scale(1.02);
-  box-shadow: 0 20px 50px rgba(181, 23, 46, 0.2);
+  transform: scale(1.01);
 }
 
 .gallery-item img {
