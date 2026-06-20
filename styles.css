@@ -210,7 +210,6 @@ body {
 }
 
 .menu-section,
-.about-section,
 .contact-section {
   margin-top: 72px;
 }
@@ -221,63 +220,32 @@ body {
   line-height: 1.05;
 }
 
-.menu-grid {
-  margin-top: 34px;
+.photo-gallery {
+  margin-top: 40px;
   display: grid;
-  gap: 24px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  auto-rows: 280px;
 }
 
-.menu-card {
-  padding: 28px;
-  border-radius: 30px;
-  background: var(--card);
-  box-shadow: var(--shadow);
+.gallery-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.accented-card {
-  background: linear-gradient(180deg, rgba(181, 23, 46, 0.08), rgba(240, 101, 149, 0.06));
+.gallery-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 20px 50px rgba(181, 23, 46, 0.2);
 }
 
-.menu-card h3 {
-  margin: 0 0 20px;
-  color: var(--brand-red);
-  font-size: 1.3rem;
-}
-
-.menu-item {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 14px;
-  align-items: start;
-  padding: 18px 0;
-  border-top: 1px solid rgba(39, 35, 35, 0.08);
-}
-
-.menu-item:first-of-type {
-  border-top: none;
-  padding-top: 0;
-}
-
-.menu-item h4 {
-  margin: 0;
-  font-size: 1.05rem;
-}
-
-.menu-item p {
-  margin: 8px 0 0;
-  font-size: 0.97rem;
-  color: var(--muted);
-}
-
-.menu-item span {
-  font-weight: 700;
-  color: var(--text);
-  white-space: nowrap;
-}
-
-.about-text {
-  max-width: 760px;
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .contact-card {
@@ -342,9 +310,12 @@ body {
 }
 
 @media (max-width: 980px) {
-  .hero,
-  .menu-grid {
+  .hero {
     grid-template-columns: 1fr;
+  }
+
+  .photo-gallery {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
 
@@ -360,6 +331,12 @@ body {
 
   .hero {
     padding: 24px;
+  }
+
+  .photo-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    auto-rows: 200px;
   }
 
   .contact-meta {

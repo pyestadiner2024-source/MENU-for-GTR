@@ -22,6 +22,7 @@ const observer = new IntersectionObserver(
   { threshold: 0.15 }
 );
 
-document.querySelectorAll('.menu-card, .about-section, .contact-card, .hero-card').forEach((section) => {
+document.querySelectorAll('.gallery-item, .contact-card, .hero-card').forEach((section) => {
   observer.observe(section);
 });
+
