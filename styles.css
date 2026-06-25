@@ -15,6 +15,7 @@
 
 html {
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
@@ -24,12 +25,17 @@ body {
     radial-gradient(circle at bottom right, rgba(240, 101, 149, 0.15), transparent 20%),
     linear-gradient(180deg, #fff5f3 0%, #fff3eb 45%, #f2e5e1 100%);
   color: var(--text);
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-touch-callout: none;
 }
 
 .page-shell {
   max-width: 1200px;
   margin: 0 auto;
   padding: 24px 24px 48px;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .topbar {
@@ -39,6 +45,7 @@ body {
   gap: 24px;
   padding: 18px 0;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .brand {
@@ -153,12 +160,19 @@ body {
   border-radius: 999px;
   font-weight: 700;
   text-decoration: none;
+  border: none;
+  cursor: pointer;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
-.btn:hover {
-  transform: translateY(-2px);
+.btn:active {
+  -webkit-transform: scale(0.98);
+  transform: scale(0.98);
 }
+
 
 .btn-primary {
   background: linear-gradient(135deg, var(--brand-red), var(--accent-pink));
@@ -232,20 +246,28 @@ body {
   margin-top: 40px;
   display: block;
   gap: 0;
-  /* Stack full-viewport images vertically so the page scrolls normally */
   overflow: visible;
+  -webkit-overflow-scrolling: touch;
 }
 
 .gallery-item {
   position: relative;
   width: 100%;
-  min-height: 100svh;
+  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
   border-radius: 0;
   overflow: hidden;
   box-shadow: none;
   transition: transform 0.28s ease, box-shadow 0.28s ease;
   scroll-snap-align: start;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
+
 
 .gallery-item:hover {
   transform: scale(1.01);
@@ -341,12 +363,15 @@ body {
 
 @media (max-width: 680px) {
   .page-shell {
-    padding: 18px 16px 32px;
+    padding: 16px 16px 32px;
+    overflow-x: hidden;
+    width: 100%;
   }
 
   .topbar {
     flex-direction: column;
     align-items: flex-start;
+    gap: 16px;
   }
 
   .brand {
@@ -354,13 +379,23 @@ body {
     justify-content: flex-start;
   }
 
+  .nav-links {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
   .hero {
-    padding: 24px;
+    padding: 20px 16px;
     gap: 24px;
+    min-height: auto;
   }
 
   .hero h1 {
-    font-size: clamp(2rem, 7vw, 3rem);
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
   }
 
   .hero-actions {
@@ -370,25 +405,58 @@ body {
 
   .btn {
     width: 100%;
+    min-height: 48px;
+    padding: 0 20px;
+    font-size: 1rem;
   }
 
   .photo-gallery {
-    margin-top: 24px;
-    margin-left: -16px;
-    margin-right: -16px;
+    margin: 20px -16px 0 -16px;
     padding: 0;
   }
 
   .gallery-item {
-    min-height: 75vh;
-    border-radius: 0;
+    min-height: 70vh;
+    height: auto;
   }
 
   .contact-card {
-    padding: 24px;
+    padding: 20px 16px;
+  }
+
+  .contact-card h2 {
+    font-size: 1.5rem;
   }
 
   .contact-meta {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 380px) {
+  .page-shell {
+    padding: 12px 12px 24px;
+  }
+
+  .brand-mark {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+  }
+
+  .brand-name {
+    font-size: 1.1rem;
+  }
+
+  .brand-sm {
+    font-size: 0.85rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .gallery-item {
+    min-height: 60vh;
   }
 }
